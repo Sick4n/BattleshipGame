@@ -1,3 +1,8 @@
+# X for placing ships and hit battleships.
+# ' ' for empty space.
+# '-' for hitting the ship.
+
+
 from random import randint
 
 # Board for holding ship locations
@@ -5,7 +10,7 @@ HIDDEN_BOARD = [[' '] * 8 for x in range(8)]
 # Board for displaying hits and misses
 GUESS_BOARD = [[' '] * 8 for x in range(8)]
 
-letters_to_numbers {'a':0, 'b':1, 'c':2, 'd':3, 'e':4, 'f':5, 'g':6, 'h':7}
+letters_to_numbers = {'a':0, 'b':1, 'c':2, 'd':3, 'e':4, 'f':5, 'g':6, 'h':7}
 
 def print_board(board):
   print("  A B C D E F G H")
@@ -16,11 +21,23 @@ def print_board(board):
     row_number += 1
   
 
-def create_ships():
-  pass  
+def create_ships(board):
+  for ship range(5):
+  ship_row, ship_column = randint(0,7), randint(0,7) 
+  while board{ship_row, ship_column} == 'X':
+     ship_row, ship_column = randint(0,7), randint(0,7)
+     board[ship_row][ship_column] = 'X'
 
-def get_ship_location():
-  pass
+  def get_ship_location():
+   row = input("Guess Row: 1-8 ")
+  while row not in '12345678':
+   print("Invalid input. Try again.")
+     row = input("Guess Row: 1-8 ")
+      column = input("Guess Column: A-H ").upper()
+  while column not in 'ABCDEFGH':
+      print("Invalid input. Try again.")
+      column = input("Guess Column: A-H ")
+  return int(row) - 1, letters_to_numbers[column]
 
 def count_hit_ships():
   pass
